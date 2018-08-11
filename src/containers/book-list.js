@@ -7,7 +7,11 @@ class BookList extends Component {
   renderList() {
     return this.props.books.map((book) => {
       return (
-        <li key={book.title} className="list-group-item">{book.title}</li>
+        <li
+          key={book.title}
+          onClick={() => this.props.selectBook(book)}
+          className="list-group-item">{book.title}
+        </li>
       );
     });
   }
@@ -41,7 +45,7 @@ function mapDispatchToProps(dispatch) {
   //the second selectBook is the actual action creator we imported at the top.
   return bindActionCreators({ selectBook: selectBook }, dispatch)
   //the first selectBook is the keyword that allows us to call
-  //this.props.selectBook, which will call our action creator. 
+  //this.props.selectBook, which will call our action creator.
 }
 
 //Promote BookList from a component to a container - it needs to know
